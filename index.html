@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>User Portfolio</title>
+	<!---custom css link--->
+	
+<style>
+    *{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: 'Quicksand', sans-serif;
+	list-style: none;
+	text-decoration: none;
+	scroll-behavior: smooth;
+}
+
+:root{
+	--bg-color: #020312;
+	--text-color: #fff;
+	--main-color: #eb4a4a;
+	--second-color: gray;
+	--other-color: #12141c;
+	--h1-font: 5.2rem;
+	--h2-font: 3.5rem;
+	--p-font: 1.1rem;
+}
+body{
+	background: var(--bg-color);
+	color: var(--text-color);
+}
+header{
+	position: fixed;
+	right: 0;
+	top: 0;
+	width: 100%;
+	z-index: 1000;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background: transparent;
+	padding: 22px 16%;
+	border-bottom: 1px solid transparent;
+	transition: all .40s ease;
+}
+.navbar{
+	display: flex;
+}
+.navbar a {
+    display: block; 
+    color: var(--text-color);
+    font-size: var(--p-font);
+    font-weight: bold;
+    padding: 10px 25px;
+    margin: 10px;
+    margin-bottom: 10px; 
+    border-radius: 0.20rem;
+    transition: all .40s ease;
+}
+.navbar a:hover{
+	background: var(--main-color);
+	color: var(--text-color);
+}
+#menu-icon{
+	font-size: 36px;
+	color: var(--text-color);
+	z-index: 10001;
+	cursor: pointer;
+	display: none;
+}
+
+section{
+	padding: 160px 16% 90px;
+}
+.home{
+	height: 100vh;
+	width: 100%;
+	position: relative;
+	/* background: url(../img/bg1.jpg); */
+	background-size: cover;
+	background-position: center;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+/* .home-text{
+	margin-left: 60%;
+} */
+.home-text h1{
+	margin: 15px 0;
+	font-size: var(--h1-font);
+	font-weight: bold;
+	line-height: 1.1;
+	letter-spacing: 2px;
+}
+span{
+	color: var(--main-color);
+}
+.home-text h4{
+	color: var(--main-color);
+	font-size: 24px;
+	font-weight: 600;
+}
+.home-text h3{
+	font-size: 24px;
+	font-weight: 600;
+	margin-bottom: 3rem;
+}
+.btn{
+	display: inline-block;
+	padding: 14px 40px;
+	border-radius: 0.5rem;
+	font-size: 17px;
+	font-weight: 500;
+	background: var(--main-color);
+	color: var(--text-color);
+	border: 1px solid var(--main-color);
+	transition: all .40s ease;
+}
+.btn:hover{
+	transform: scale(1.01) translateY(-5px);
+	background: transparent;
+	border: 1px solid var(--main-color);
+}
+
+header.sticky{
+	padding: 10px 16%;
+	background: var(--bg-color);
+	border-bottom: 1px solid #0e1630;
+}
+.about{
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	align-items: center;
+	gap: 2rem;
+}
+.about-text h4{
+	margin: 10px 0;
+	color: var(--main-color);
+	font-size: 20px;
+	font-weight: 600;
+}
+.about-text h2{
+	font-size: var(--h2-font);
+}
+.about-text p{
+	color: var(--second-color);
+	font-size: var(--p-font);
+	line-height: 30px;
+	margin-bottom: 2rem;
+}
+
+.about-gri{
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, auto));
+	align-items: center;
+	gap: 1rem;
+	margin-bottom: 3rem;
+}
+.about-in h5{
+	font-size: 22px;
+	font-weight: 600;
+}
+.about-img img{
+	height: auto;
+	width: 100%;
+	max-width: 460px;
+}
+
+.main-text{
+	text-align: center;
+}
+.main-text h2{
+	font-size: var(--h2-font);
+	margin-bottom: 10px;
+}
+.main-text h4{
+	color: var(--main-color);
+	font-size: 24px;
+	font-weight: 600;
+}
+.services-content{
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, auto));
+	align-items: center;
+	text-align: center;
+	gap: 2rem;
+	margin-top: 5rem;
+}
+.box{
+	padding: 45px;
+	background: #12141c;
+	border-top: 5px solid transparent;
+	border-radius: 0.5rem;
+	transition: all .40s ease;
+	cursor: pointer;
+}
+.box h3{
+	font-size: 24px;
+	font-weight: 600;
+	margin: 15px 0;
+	transition: all .40s ease;
+}
+.box p{
+	color: var(--second-color);
+	font-size: var(--p-font);
+	line-height: 30px;
+}
+.box:hover{
+	transform: scale(1.01) translateY(-5px);
+	border-top: 5px solid var(--main-color);
+}
+.box:hover h3{
+	color: var(--main-color);
+}
+
+.portfolio-content{
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(350px, auto));
+	align-items: center;
+	gap: 2rem;
+	margin-top: 5rem;
+}
+.row img{
+	height: auto;
+	width: 100%;
+	border-radius: 0.5rem;
+	margin-bottom: 1.5rem;
+}
+.row{
+	padding: 25px;
+	background: #12141c;
+	border-radius: 0.5rem;
+	transition: all .40s ease;
+}
+.main-row{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 1rem;
+}
+.row h3{
+	font-size: 25px;
+	font-weight: 700;
+}
+.row h6{
+	color: var(--main-color);
+	font-size: 16px;
+	font-weight: 500;
+	letter-spacing: 1px;
+}
+.row-icon i{
+	font-size: 21px;
+}
+.row:hover{
+	transform: scale(1.01) translateY(-5px);
+	cursor: pointer;
+}
+
+
+
+.contact-text {
+    display: contents;
+    flex-direction: column;
+    align-items: center; 
+    gap: 1rem;
+}
+
+.contact-text h4 {
+    margin: 15px 0;
+    color: var(--main-color);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.contact-text h2 {
+    font-size: var(--h2-font);
+}
+
+/* THis is making the text :vertical */
+.contact-links {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+/* THis is creating space between text  */
+.contact-links li {
+    margin-right: 20px;
+}
+
+
+/* This is bolding the text   */
+.contact-links li a {
+    color: var(--second-color);
+    font-size: var(--p-font);
+    font-weight: 600;
+    transition: all .40s ease;
+}
+
+.contact-links li a:hover {
+    transform: scale(1.01) translateY(-5px);
+    color: var(--main-color);
+}
+
+
+
+.last-text p{
+	text-align: center;
+	padding: 15px;
+	color: var(--second-color);
+	font-size: 15px;
+	font-weight: 600;
+	letter-spacing: 1px;
+}
+.top{
+	position: fixed;
+	bottom: 2.1rem;
+	right: 2.1rem;
+}
+.top i{
+	color: var(--text-color);
+	background: var(--main-color);
+	font-size: 20px;
+	padding: 10px;
+	border-radius: 0.5rem;
+}
+
+@media (max-width: 1325px){
+	header{
+		padding: 16px 3%;
+	}
+	header.sticky{
+		padding: 8px 3%;
+	}
+	section{
+		padding: 130px 3% 60px;
+	}
+}
+
+@media (max-width: 970px){
+	:root{
+		--h1-font: 4.2rem;
+	--h2-font: 2.9rem;
+	--p-font: 1rem;
+	}
+	section{
+		padding: 70px 3% 60px;
+	}
+	.home{
+		height: 85vh;
+	}
+	.about{
+		grid-template-columns: 1fr;
+	}
+	.about-img{
+		text-align: center;
+	}
+	.contact{
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 830px){
+	#menu-icon{
+		display: block;
+	}
+	.navbar{
+		position: absolute;
+		top: -600px;
+		right: 0;
+		left: 0;
+		display: flex;
+		flex-direction: column;
+		background: #12141c;
+		text-align: left;
+		transition: all .40s ease;
+		text-align: left;
+	}
+	.navbar a{
+		display: block;
+		padding: 1rem;
+		margin: 1rem;
+	}
+	.navbar.active{
+		top: 100%;
+	}
+	:root{
+		--h1-font: 3.7rem;
+	--h2-font: 2.7rem;
+	}
+}
+
+.back-video{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	z-index: -1;
+}
+
+@media (min-aspect-ratio: 16/10){
+	.back-video{
+		width: 110%;
+		height: auto;
+	}
+}
+@media (max-aspect-ratio: 16/10){
+	.back-video{
+		width: auto;
+		height: 100%;
+	}
+}
+
+img{
+	height:150px;
+	width: 150px;
+}
+
+.tech-skills h2{
+	font-size: var(--h2-font);
+	text-align: center;
+}
+
+.skills{
+	box-sizing: border-box;
+}
+
+.diff-skills::after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.skill-item{
+	float: left;
+	width: 14.28%;
+	height: 90%;
+	padding: 8px;
+} 
+
+@media (max-width:660px){
+	.skill-item img{
+		height:90%;
+		width:90%;
+	}
+	.tech-skills h2{
+		font-size: var(--h2-font);
+	}
+}
+
+/* Technical Skills CSS */
+*{
+	padding: 0;
+	margin: 0;
+box-sizing: border-box; 
+font-family: 'Roboto', sans-serif;
+}
+
+.inner{
+	padding-top: 20px;
+}
+
+.Tech_header{
+	text-align: center;
+	color: #fff;
+	padding: 1rem;
+	position: relative;
+}
+
+.Tech_header::after{
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	height: 4px;
+	width: 100px;
+	background-color: #eb4a4a;
+	border-radius: 2px;
+}
+
+.Tcontainer{
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	grid-gap: 1rem;
+	padding: 1rem 80px;
+	font-size: 1.2rem;
+}
+
+.skill-box{
+	padding: 1rem;
+	color: #ddd;
+	cursor: pointer;
+}
+
+.skill-box:hover > .skill-title:after, .skill-box:hover > .skill-title:before{
+	width: 35px;
+}
+
+.skill-box:hover .tech_img{
+	transform: translateY(-10px);
+}
+
+.skill-title{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 0.5rem;
+	margin-bottom: 0.5rem;
+	position: relative;
+}
+
+.skill-title:after{
+	content: '';
+	position: absolute;
+	bottom: 0;
+	right: 50%;
+	width: 0;
+	height: 4px;
+	border-radius: 2px 0 0 2px;
+	background-color: #eb4a4a;
+	transition: .5s;
+}
+
+.skill-title:before{
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	width: 0;
+	height: 4px;
+	border-radius: 0 2px 2px 0;
+	background-color: #eb4a4a;
+	transition: .5s;
+}
+
+.tech_img{
+	width: 90px;
+	height: 90px;
+	position: relative;
+	border-radius: 45px;
+	background-color: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: .5s;
+}
+
+.tech_img:after{
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 50%;
+	height: 90px;
+	background: rgba(100, 100, 100, 0.5);
+	border-radius: 45px 0 0 45px;
+}
+
+.skill-title h3{
+	color: #fff;
+	margin-top: 0.5rem;
+}
+
+.skill-icon{
+	width: 50px;
+	height: 50px;
+	z-index: 2;
+}
+
+@media screen and (max-width: 990px){
+	.Tcontainer{
+		grid-template-columns: repeat(2, 1fr);
+		padding: 2rem 50px;
+	}
+}
+	
+@media screen and (max-width: 650px){
+	.Tcontainer{
+		grid-template-columns: 1fr;
+	}
+}
+
+</style>
+
+
+</head>
+<body>
+	
+	<header>
+		<h2 class="logo"><span>Portfo</span>lio</h2>
+		<ul class="navbar">
+			<li><a href="#home">Home</a></li>
+			<li><a href="#about">About Me</a></li>
+			<!-- <li><a href="#experience">Experience</a></li> -->
+			<li><a href="#skills">Technology</a></li>
+			<!-- <li><a href="#achievement">Achievements</a></li> -->
+			<li><a href="#portfolio">Projects</a></li>
+			<li><a href="#contact">Contact</a></li>
+		</ul>
+	</header>
+
+	
+	<section class="home" id="home">
+		<video autoplay loop muted plays-inline class="back-video">
+			<source src="bg.mp4" type="video/mp4">
+		</video>
+		<div class="home-text">
+			<h4>Hello</h4>
+			<h1 >I'm a Full stack  <br> </h1>
+			<h1><span>Web Developer</span> </h1>
+			<a href="https://drive.google.com/drive/folders/1Kt93z3d03xAKkW0U5UPP8YIrOrsRLHe2?usp=drive_link" class="btn" target="_blank">Download Resume</a>
+		</div>
+	</section>
+
+
+	<section class="about" id="about">
+		<div class="about-img">
+			<img src="REhan.jpeg">
+		</div>
+
+		<div class="about-text">
+			<h2>About Me</h2>
+			<h4>Hello, My name is Rehan Rabbani!!</h4>
+			<p>I'm in the final stretch of my MSc in Computer Science at Makhanlal University, Bhopal, while also diving into Full Stack Development through a prestigious certification program at <span>"IIT Roorkee"</span>.</p><br>
+			
+			
+			<a href="#contact" class="btn">Contact Me</a>
+		</div>
+	</section>
+
+	<!-- Technical Languages -->
+	<div class="inner">
+		<div class="Tech_header">
+			<h1>Languages & FrameWork</h1>
+		</div>
+		<div class="Tcontainer">
+			<div class="skill-box">
+				<div class="skill-title">
+					<div class="tech_img">
+						<img class="skill-icon" src="img/C.png" alt="Java">
+					</div>
+					<h3>Java</h3>
+				</div>
+			</div>
+
+			<div class="skill-box">
+				<div class="skill-title">
+					<div class="tech_img">
+					<img class="skill-icon" src="img/C++.png" alt="Spring">
+					</div>
+					<h3>SpringBoot</h3>
+				</div>
+			</div>
+
+			<div class="skill-box">
+				<div class="skill-title">
+					<div class="tech_img">
+						<img class="skill-icon" src="img/html.png" alt="Html">
+					</div>
+					<h3>HTML</h3>
+				</div>
+			</div>
+
+			<div class="skill-box">
+				<div class="skill-title">
+					<div class="tech_img">
+						<img class="skill-icon" src="img/css.png" alt="Css">
+					</div>
+					<h3>Css</h3>
+				</div>
+			</div>
+
+		   <div class="skill-box">
+			<div class="skill-title">
+				<div class="tech_img">
+					<img class="skill-icon" src="img/js.png" alt="Script">
+				</div>
+				<h3>JavaScript</h3>
+				</div>
+			</div>
+			<div class="skill-box">
+				<div class="skill-title">
+					<div class="tech_img">
+						<img class="skill-icon" src="img/python.png" alt="DSA">
+					</div>
+					<h3>DSA</h3>
+				</div>
+			</div>
+			<div class="skill-box">
+				<div class="skill-title">
+					<div class="tech_img">
+						<img class="skill-icon" src="img/python.png" alt="React">
+					</div>
+					<h3>React</h3>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- -Experience- -->
+	<!-- <section class="experience" id="experience">
+		<div class="main-text">
+			<h2>My Experiences</h2>
+		</div>
+		<br>
+		<div class="experience-content">
+			<div class="box">
+				<img src="img/gfg.png" >
+				<h3>GeeksforGeeks</h3>
+				<h4>
+					<span>
+						Technical Content Writer
+					</span>
+				</h4>
+				<br>
+				<p>
+					• Created Multiple Software Development Projects with their detailed Documentation.
+					<br>
+					• Worked with the Dynamic Team of GeeksforGeeks.
+				</p>
+			</div>
+		</div>
+	</section> -->
+
+	<!-- -Skills- -->
+	<section class="skills" id="skills">
+		<div class="main-text">
+			<h2>Technology</h2>
+		</div>
+
+		<div class="skills-content">
+			<div class="box">
+				<img src="java.png" >
+				<img src="spring.png" >
+				<h3>Backend Development</h3>
+				<p>
+					"Skilled in Java, especially with Spring Boot, I've built a variety of projects showcasing my dedication. From dynamic web apps to intricate backend systems, my journey with Spring Boot has been an exciting exploration of innovation. With each project, I've honed my abilities, pushing boundaries and delivering impactful solutions.".</p>
+			</div>
+
+			<div class="box">
+				<img src="javascript.png" >
+				<img src="React-icon.svg.png" >
+				<img src="html.webp" >
+				<img src="css.jpg" >
+				<h3>Front-end Development</h3>
+				<p>"Passionate front-end developer skilled in JavaScript, React, HTML, and CSS, dedicated to crafting immersive digital experiences that captivate and delight users. With a keen eye for design and a commitment to clean, efficient code, I bring ideas to life with creativity and precision, ensuring seamless functionality and stunning aesthetics.".</p>
+			</div>
+
+			<!-- <div class="box">
+				<img src="img/ml-removebg-preview.png">
+				<h3>Machine Learning</h3>
+				<p>Machine learning is a transformative field at the intersection of computer science and A.I., empowering systems to learn from data, recognize patterns, and make intelligent decisions, entering in a automated insights and problem-solving.</p>
+			</div> -->
+		</div>
+	</section>
+
+	<!-- -Achievements- -->
+	<!-- <section class="achievement" id="achievement">
+		<div class="main-text">
+			<h2>My Achievements</h2>
+			<h4>Some of My Major Achievements</h4>
+		</div>
+
+		<div class="portfolio-content">
+			<div class="row">
+				<img src="img/coding.jpg">
+				<div class="main-row">
+					<div class="row-text">
+						<h6>Write your Coding achievements here</h6>
+					</div>
+				</div>
+				<h3>Details about the Achievement </h3>
+			</div>
+			<div class="row">
+				<img src="img/hackathon.jpg">
+				<div class="main-row">
+					<div class="row-text">
+						<h6>Write your Hackathons achievements here</h6>
+					</div>
+				</div>
+				<h3>Details about the Hackathon </h3>
+			</div>
+			<div class="row">
+				<img src="img/extras.jpg">
+				<div class="main-row">
+					<div class="row-text">
+						<h6>Write your Extra curricular achievements here</h6>
+					</div>
+				</div>
+				<h3>Details about the Achievement </h3>
+			</div>
+			
+		</div>
+	</section> -->
+	
+
+	<!-- -portfolio- -->
+	<section class="portfolio" id="portfolio">
+		<div class="main-text">
+			<h2>My Projects</h2>
+			<h4>Some Of My Works</h4>
+		</div>
+
+		<div class="portfolio-content">
+			<div class="row">
+				<a href="https://github.com/rehansi/G3_BED_GradedProject4.git" target="_blank">
+					<img src="techy.avif">
+				</a>
+					<div class="main-row">
+					<div class="row-text">
+						<h6>Back-End Development</h6>
+					</div>
+				</div>
+				<h3>Spring MVC</h3> <br>
+
+				<p style="font-family: Georgia, 'Times New Roman', Times, serif;">The project aims to create a Customer Management Web App, where the dao layer is performed with Hibernate, Admin can Display, Update, Add new entry of a customer , Delete a customer from the database. Entire Web App is developed on MVC design paradigm.</p>
+			</div>
+
+			<div class="row">
+				<a href="https://github.com/rehansi/G3_BED_GradedProject3.git" target="_blank">
+					<img src="techy1.jpg">
+				</a>
+				<div class="main-row">
+					<div class="row-text">
+						<h6>Back-End Development</h6>
+					</div>
+				</div>
+				<h3>Spring MVC </h3> <br>
+				<p style="font-family: Georgia, 'Times New Roman', Times, serif;">
+					The project aims to create a Customer Management Web App, where the dao layer is performed with Hibernate, Admin can Display, Update, Add new entry of a customer , Delete a customer from the database. Entire Web App is developed on MVC design paradigm.
+				</p>
+			</div>
+			<div class="row">
+				<a href=https://github.com/rehansi/Rehansir-G1B3_DSA_GradedProject2.git target="_blank">
+					<img src="dsa.jpg">
+				</a>
+				<div class="main-row">
+					<div class="row-text">
+						<h6>Data Structures and Algorithms</h6>
+					</div>
+				</div>
+				<h3>Floor Construction & Sky Scrapper</h3> <br>
+				<p>This project aims to give a construction layout of a skyscraper based on the floor area constructed on a particular day. In the second project, we are changing the complete binary tree to a skewed tree based on the requirement</p>
+			</div>
+
+			
+			<div class="row">
+				<a href= target="_blank">
+					<img src="oops.jpg">
+				</a>
+				<div class="main-row">
+					<div class="row-text">
+						<h6>OOPs</h6>
+					</div>
+				</div>
+				<h3>Foundations of Programming - JAVA</h3>
+				 <br> <p>This project aims to give a construction layout of a skyscraper based on the floor area constructed on a particular day. In the second project, we are changing the complete binary tree to a skewed tree based on the requirement</p>
+			</div>
+
+			
+		</div>
+	</section>
+
+	<!-- -POR- -->
+	<!-- <section class="POR" id="POR">
+		<div class="main-text">
+			<h2>Position of Responsibilities</h2>
+			<h4>Some of My valunteer Work</h4>
+		</div>
+
+		<div class="portfolio-content">
+			<div class="row">
+				<img src="img/speaker.jpg">
+					<div class="main-row">
+					<div class="row-text">
+						<h6>GFG College Chapter</h6>
+					</div>
+				</div>
+				<h3>President</h3>
+			</div>
+
+			<div class="row">
+				<img src="img/chess.jpg">
+				<div class="main-row">
+					<div class="row-text">
+						<h6>Chess Coordinator</h6>
+					</div>
+				</div>
+				<h3>College Chess Club</h3>
+			</div>
+		</div>
+	</section> -->
+
+	<!-- -contact- -->
+	<section class="contact" id="contact">
+    <div class="contact-text">
+        <h2>Contact Me</h2>
+        <h4>Let's Work Together</h4>
+        
+        <div class="contact-list">
+            <ul class="contact-links">
+                <li><a href="#">Mobile +917879368241</a></li>
+                <li><a href="mailto:RehanRabbani07@gmail.com" target="_blank">Gmail</a></li>
+                <li><a href="https://github.com/rehansi" target="_blank">Github</a></li>
+                <li><a href="https://www.linkedin.com/in/rehan-rabbani/" target="_blank">Linkedin</a></li>
+            </ul>
+        </div>
+        
+    </div> 
+</section>
+
+
+	<!---scroll-top--->
+	<a href="#" class="top"><i class='bx bx-up-arrow-alt' ></i></a>
+
+	<script src="https://unpkg.com/scrollreveal"></script>
+
+	<!---custom js link--->
+	<script type="text/javascript" src="js/script.js"></script>
+
+</body>
+</html>
